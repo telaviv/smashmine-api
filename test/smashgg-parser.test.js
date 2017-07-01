@@ -1,4 +1,4 @@
-import { normalizeUrl } from '../lib/smashgg-parser'
+import { normalizeUrl } from '~/smashgg-parser'
 
 test('normalizeUrl', () => {
   const originalUrl = 'https://smash.gg/tournament/norcal-smash-4-s-arcadian-runback/events'
