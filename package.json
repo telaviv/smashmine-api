@@ -2,11 +2,12 @@
   "name": "smashmine-api",
   "version": "0.1.0",
   "description": "The node api for smashmine.",
-  "main": "server.js",
+  "main": "lib/index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
+    "start": "nodemon lib/index.js --exec babel-node",
     "test": "test"
   },
   "keywords": [
@@ -15,5 +16,10 @@
     "glicko"
   ],
   "author": "Shawn Krisman",
-  "license": "AGPL-3.0"
+  "license": "AGPL-3.0",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.5.2",
+    "nodemon": "^1.11.0"
+  }
 }
