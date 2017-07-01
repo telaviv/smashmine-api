@@ -1,0 +1,19 @@
+{
+  "name": "smashmine-api",
+  "version": "0.1.0",
+  "description": "The node api for smashmine.",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "smash brothers",
+    "rankings",
+    "glicko"
+  ],
+  "author": "Shawn Krisman",
+  "license": "AGPL-3.0"
+}
