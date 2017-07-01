@@ -8,7 +8,12 @@
   },
   "scripts": {
     "start": "nodemon lib/index.js --exec babel-node",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint lib/ test/"
+  },
+  "precommit": {
+    "lint",
+    "test"
   },
   "keywords": [
     "smash brothers",
@@ -21,7 +26,11 @@
     "babel-cli": "^6.24.1",
     "babel-plugin-root-import": "^5.1.0",
     "babel-preset-env": "^1.5.2",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.6.1",
     "jest": "^20.0.4",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "pre-commit": "^1.2.2"
   }
 }
