@@ -1,3 +1,4 @@
-export function normalizeUrl() {
-  return 'https://smash.gg/tournament/norcal-smash-4-s-arcadian-runback';
+export function normalizeUrl(url) {
+  const slug = url.match('.*smash.gg/tournament/([^/]+).*')[1];
+  return `https://smash.gg/tournament/${slug}`;
 }
