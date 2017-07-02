@@ -1,4 +1,4 @@
-import { normalizeUrl, isMatchingUrl } from '../smashgg-parser';
+import { normalizeUrl, isMatchingUrl, generalInfoAPIUrl } from '../smashgg-parser';
 
 describe('normalizeUrl', () => {
   it('removes suffixes', () => {
@@ -29,5 +29,16 @@ describe('isMatchingUrl', () => {
   it('does not match challonge urls', () => {
     const url = 'http://challonge.com/capcom_cup_2015';
     expect(isMatchingUrl(url)).toBeFalsy();
+  });
+});
+
+describe('generalInfoAPIUrl', () => {
+  it('is created from them parsed slug', () => {
+    const url = 'https://smash.gg/tournament/norcal-smash-4-s-arcadian-runback/events';
+    const apiUrl = 'https://smash.gg/api/-/resource/gg_api./tournament/' +
+                   'norcal-smash-4-s-arcadian-runback' +
+                   ';expand=%5B%22groups%22%2C%22tournament%22%2C%22event%22%5D' +
+                   ';slug=norcal-smash-4-s-arcadian-runback';
+    expect(generalInfoAPIUrl(url)).toEqual(apiUrl);
   });
 });
