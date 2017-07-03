@@ -1,4 +1,7 @@
-import { normalizeUrl, isMatchingUrl, generalInfoAPIUrl } from '../smashgg-parser';
+jest.mock('node-fetch');
+
+import { normalizeUrl, isMatchingUrl, fetchTournamentData } from '../smashgg-parser';
+import mockFetch from 'node-fetch';
 
 describe('normalizeUrl', () => {
   it('removes suffixes', () => {
@@ -7,7 +10,7 @@ describe('normalizeUrl', () => {
     expect(normalizeUrl(originalUrl)).toEqual(normalizedUrl);
   });
 
-  it('removes traililng slashes', () => {
+  it('removes trailing slashes', () => {
     const originalUrl = 'https://smash.gg/tournament/cats/';
     const normalizedUrl = 'https://smash.gg/tournament/cats';
     expect(normalizeUrl(originalUrl)).toEqual(normalizedUrl);
@@ -32,13 +35,18 @@ describe('isMatchingUrl', () => {
   });
 });
 
-describe('generalInfoAPIUrl', () => {
-  it('is created from them parsed slug', () => {
-    const url = 'https://smash.gg/tournament/norcal-smash-4-s-arcadian-runback/events';
+describe('fetchTournamentData', () => {
+  afterEach(() => {
+    mockFetch.clear();
+  });
+
+  it('was called with with the general info url', () => {
+    const url = 'https://smash.gg/tournament/norcal-smash-4-s-arcadian-runback';
     const apiUrl = 'https://smash.gg/api/-/resource/gg_api./tournament/' +
                    'norcal-smash-4-s-arcadian-runback' +
                    ';expand=%5B%22groups%22%2C%22tournament%22%2C%22event%22%5D' +
                    ';slug=norcal-smash-4-s-arcadian-runback';
-    expect(generalInfoAPIUrl(url)).toEqual(apiUrl);
+    fetchTournamentData(url);
+    expect(mockFetch.request).toEqual(apiUrl);
   });
 });

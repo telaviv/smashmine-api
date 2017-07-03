@@ -16,11 +16,6 @@
     "lint",
     "test"
   ],
-  "jest": {
-    "setupFiles": [
-      "./test/fixtures/setupJest.js"
-    ]
-  },
   "keywords": [
     "smash brothers",
     "rankings",
@@ -38,5 +33,10 @@
     "jest": "^20.0.4",
     "nodemon": "^1.11.0",
     "pre-commit": "^1.2.2"
+  },
+  "dependencies": {
+    "callable-object": "^1.0.2",
+    "isomorphic-fetch": "^2.2.1",
+    "node-fetch": "^1.7.1"
   }
 }
