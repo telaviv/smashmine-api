@@ -10,14 +10,17 @@
   "scripts": {
     "start": "nodemon lib/index.js --exec babel-node",
     "test": "jest",
-    "lint": "eslint src",
-    "preinstall": "node -e \"var d='node_modules/src',fs=require('fs');fs.stat(d,function(e){!e&&fs.unlinkSync(d)});\"",
-    "postinstall": "node -e \"var s='../src',d='node_modules/src',fs=require('fs');fs.stat(d,function(e){e&&fs.symlinkSync(s,d,'dir')});\""
+    "lint": "eslint src"
   },
   "precommit": [
     "lint",
     "test"
   ],
+  "jest": {
+    "setupFiles": [
+      "./test/fixtures/setupJest.js"
+    ]
+  },
   "keywords": [
     "smash brothers",
     "rankings",
